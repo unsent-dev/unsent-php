@@ -480,6 +480,6 @@ MIT
 
 ## Support
 
-- [Documentation](https://unsent.dev/docs)
-- [GitHub Issues](https://github.com/souravsspace/unsent)
+- [Documentation](https://docs.unsent.dev)
+- [GitHub Issues](https://github.com/souravsspace/unsent-php/issues)
 - [Discord Community](https://discord.gg/unsent)

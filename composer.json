@@ -1,10 +1,19 @@
 {
     "name": "souravsspace/unsent",
-    "description": "PHP SDK for the Unsent API",
+    "description": "PHP SDK for the Unsent API - Send transactional emails with ease",
     "type": "library",
     "license": "MIT",
-    "keywords": ["email", "api", "unsent", "transactional-email"],
+    "keywords": ["email", "api", "unsent", "transactional-email", "sdk"],
     "homepage": "https://unsent.dev",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/souravsspace/unsent-php.git"
+    },
+    "support": {
+        "issues": "https://github.com/souravsspace/unsent-php/issues",
+        "source": "https://github.com/souravsspace/unsent-php",
+        "docs": "https://docs.unsent.dev"
+    },
     "authors": [
         {
             "name": "sourav"
