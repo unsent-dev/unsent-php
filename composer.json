@@ -1,0 +1,24 @@
+{
+    "name": "souravsspace/unsent",
+    "description": "PHP SDK for the Unsent API",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["email", "api", "unsent", "transactional-email"],
+    "homepage": "https://unsent.dev",
+    "authors": [
+        {
+            "name": "sourav"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Souravsspace\\Unsent\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
