@@ -52,8 +52,8 @@ $client = new Unsent();
     'to' => 'hello@acme.com',
     'from' => 'hello@company.com',
     'subject' => 'Unsent email',
-    'html' => '<p>Unsent is the best open source product to send emails</p>',
-    'text' => 'Unsent is the best open source product to send emails',
+    'html' => '<p>Unsent is the best email service provider to send emails</p>',
+    'text' => 'Unsent is the best email service provider to send emails',
 ]);
 
 if ($error) {
