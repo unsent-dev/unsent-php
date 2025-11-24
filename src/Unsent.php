@@ -107,13 +107,14 @@ class Unsent
      * @param string $method HTTP method
      * @param string $path Request path
      * @param mixed|null $json Request body
+     * @param array $headers Optional custom headers
      * @return array [data, error]
      * @throws UnsentHTTPError If raiseOnError is true and request fails
      */
-    private function request(string $method, string $path, $json = null): array
+    private function request(string $method, string $path, $json = null, array $headers = []): array
     {
         $options = [
-            'headers' => $this->headers,
+            'headers' => array_merge($this->headers, $headers),
         ];
 
         if ($json !== null) {
@@ -164,22 +165,24 @@ class Unsent
      *
      * @param string $path Request path
      * @param mixed $body Request body
+     * @param array $headers Optional custom headers
      * @return array [data, error]
      */
-    public function post(string $path, $body): array
+    public function post(string $path, $body, array $headers = []): array
     {
-        return $this->request('POST', $path, $body);
+        return $this->request('POST', $path, $body, $headers);
     }
 
     /**
      * Perform a GET request.
      *
      * @param string $path Request path
+     * @param array $headers Optional custom headers
      * @return array [data, error]
      */
-    public function get(string $path): array
+    public function get(string $path, array $headers = []): array
     {
-        return $this->request('GET', $path);
+        return $this->request('GET', $path, null, $headers);
     }
 
     /**
@@ -187,11 +190,12 @@ class Unsent
      *
      * @param string $path Request path
      * @param mixed $body Request body
+     * @param array $headers Optional custom headers
      * @return array [data, error]
      */
-    public function put(string $path, $body): array
+    public function put(string $path, $body, array $headers = []): array
     {
-        return $this->request('PUT', $path, $body);
+        return $this->request('PUT', $path, $body, $headers);
     }
 
     /**
@@ -199,11 +203,12 @@ class Unsent
      *
      * @param string $path Request path
      * @param mixed $body Request body
+     * @param array $headers Optional custom headers
      * @return array [data, error]
      */
-    public function patch(string $path, $body): array
+    public function patch(string $path, $body, array $headers = []): array
     {
-        return $this->request('PATCH', $path, $body);
+        return $this->request('PATCH', $path, $body, $headers);
     }
 
     /**
@@ -211,10 +216,11 @@ class Unsent
      *
      * @param string $path Request path
      * @param mixed|null $body Optional request body
+     * @param array $headers Optional custom headers
      * @return array [data, error]
      */
-    public function delete(string $path, $body = null): array
+    public function delete(string $path, $body = null, array $headers = []): array
     {
-        return $this->request('DELETE', $path, $body);
+        return $this->request('DELETE', $path, $body, $headers);
     }
 }

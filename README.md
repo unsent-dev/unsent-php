@@ -130,6 +130,23 @@ if ($error) {
 }
 ```
 
+#### Idempotent Retries
+
+To prevent duplicate emails when retrying failed requests, you can provide an idempotency key.
+
+```php
+<?php
+
+[$data, $error] = $client->emails->send([
+    'to' => 'hello@acme.com',
+    'from' => 'hello@company.com',
+    'subject' => 'Unsent email',
+    'html' => '<p>Unsent is the best email service provider to send emails</p>',
+], [
+    'idempotencyKey' => 'unique-key-123'
+]);
+```
+
 ### Managing Emails
 
 #### Get Email Details

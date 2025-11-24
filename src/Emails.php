@@ -26,20 +26,22 @@ class Emails
      * Send an email (alias for create).
      *
      * @param array $payload Email data
+     * @param array $options Optional parameters (e.g. ['idempotencyKey' => '...'])
      * @return array [data, error]
      */
-    public function send(array $payload): array
+    public function send(array $payload, array $options = []): array
     {
-        return $this->create($payload);
+        return $this->create($payload, $options);
     }
 
     /**
      * Create and send an email.
      *
      * @param array $payload Email data
+     * @param array $options Optional parameters (e.g. ['idempotencyKey' => '...'])
      * @return array [data, error]
      */
-    public function create(array $payload): array
+    public function create(array $payload, array $options = []): array
     {
         $body = $payload;
 
@@ -54,16 +56,22 @@ class Emails
             $body['scheduledAt'] = $body['scheduledAt']->format(\DateTime::ATOM);
         }
 
-        return $this->unsent->post('/emails', $body);
+        $headers = [];
+        if (isset($options['idempotencyKey'])) {
+            $headers['Idempotency-Key'] = $options['idempotencyKey'];
+        }
+
+        return $this->unsent->post('/emails', $body, $headers);
     }
 
     /**
      * Send multiple emails in batch.
      *
      * @param array $emails Array of email payloads
+     * @param array $options Optional parameters (e.g. ['idempotencyKey' => '...'])
      * @return array [data, error]
      */
-    public function batch(array $emails): array
+    public function batch(array $emails, array $options = []): array
     {
         $items = [];
         
@@ -84,7 +92,12 @@ class Emails
             $items[] = $item;
         }
 
-        return $this->unsent->post('/emails/batch', $items);
+        $headers = [];
+        if (isset($options['idempotencyKey'])) {
+            $headers['Idempotency-Key'] = $options['idempotencyKey'];
+        }
+
+        return $this->unsent->post('/emails/batch', $items, $headers);
     }
 
     /**
