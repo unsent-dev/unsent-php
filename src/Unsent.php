@@ -77,7 +77,7 @@ class Unsent
         $this->key = $key ?? getenv('UNSENT_API_KEY') ?: getenv('UNSENT_API_KEY');
         
         if (!$this->key) {
-            throw new \InvalidArgumentException('Missing API key. Pass it to new Unsent("us_123") or set UNSENT_API_KEY environment variable.');
+            throw new \InvalidArgumentException('Missing API key. Pass it to new Unsent("un_xxxx") or set UNSENT_API_KEY environment variable.');
         }
 
         $base = getenv('UNSENT_BASE_URL') ?: getenv('UNSENT_BASE_URL') ?: self::DEFAULT_BASE_URL;

@@ -27,7 +27,7 @@ require 'vendor/autoload.php';
 
 use Souravsspace\Unsent\Unsent;
 
-$client = new Unsent('us_12345');
+$client = new Unsent('un_xxxx');
 ```
 
 ### Environment Variables
@@ -394,7 +394,7 @@ By default, the SDK raises exceptions on HTTP errors:
 use Souravsspace\Unsent\Unsent;
 use Souravsspace\Unsent\UnsentHTTPError;
 
-$client = new Unsent('us_12345');
+$client = new Unsent('un_xxxx');
 
 try {
     [$data, $error] = $client->emails->send([
@@ -413,7 +413,7 @@ To disable automatic error raising:
 ```php
 <?php
 
-$client = new Unsent('us_12345', null, false);
+$client = new Unsent('un_xxxx', null, false);
 
 [$data, $error] = $client->emails->send([
     'to' => 'hello@acme.com',
@@ -444,7 +444,7 @@ $httpClient = new Client([
     'verify' => false, // Not recommended for production!
 ]);
 
-$client = new Unsent('us_12345', null, true, $httpClient);
+$client = new Unsent('un_xxxx', null, true, $httpClient);
 ```
 
 ## API Reference
