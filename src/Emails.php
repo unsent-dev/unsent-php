@@ -131,6 +131,82 @@ class Emails
     }
 
     /**
+     * List emails.
+     *
+     * @param array $options Optional parameters (page, limit, startDate, endDate, domainId)
+     * @return array [data, error]
+     */
+    public function list(array $options = []): array
+    {
+        $params = [];
+        
+        if (isset($options['page'])) {
+            $params['page'] = (string) $options['page'];
+        }
+        if (isset($options['limit'])) {
+            $params['limit'] = (string) $options['limit'];
+        }
+        if (isset($options['startDate'])) {
+            $params['startDate'] = $options['startDate'];
+        }
+        if (isset($options['endDate'])) {
+            $params['endDate'] = $options['endDate'];
+        }
+        
+        // Handle domainId as string or array
+        if (isset($options['domainId'])) {
+            if (is_array($options['domainId'])) {
+                $params['domainId'] = $options['domainId'];
+            } else {
+                $params['domainId'] = [$options['domainId']];
+            }
+        }
+        
+        $query = http_build_query($params);
+        $path = '/emails' . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
+    }
+
+    /**
+     * Get email complaints.
+     *
+     * @param array $options Optional parameters (page, limit)
+     * @return array [data, error]
+     */
+    public function getComplaints(array $options = []): array
+    {
+        $query = http_build_query($options);
+        $path = '/emails/complaints' . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
+    }
+
+    /**
+     * Get email bounces.
+     *
+     * @param array $options Optional parameters (page, limit)
+     * @return array [data, error]
+     */
+    public function getBounces(array $options = []): array
+    {
+        $query = http_build_query($options);
+        $path = '/emails/bounces' . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
+    }
+
+    /**
+     * Get email unsubscribes.
+     *
+     * @param array $options Optional parameters (page, limit)
+     * @return array [data, error]
+     */
+    public function getUnsubscribes(array $options = []): array
+    {
+        $query = http_build_query($options);
+        $path = '/emails/unsubscribes' . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
+    }
+
+    /**
      * Cancel a scheduled email.
      *
      * @param string $emailId Email ID

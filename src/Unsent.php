@@ -60,6 +60,41 @@ class Unsent
     public $domains;
 
     /**
+     * @var Analytics Analytics resource client
+     */
+    public $analytics;
+
+    /**
+     * @var ApiKeys API Keys resource client
+     */
+    public $apiKeys;
+
+    /**
+     * @var ContactBooks Contact Books resource client
+     */
+    public $contactBooks;
+
+    /**
+     * @var Settings Settings resource client
+     */
+    public $settings;
+
+    /**
+     * @var Suppressions Suppressions resource client
+     */
+    public $suppressions;
+
+    /**
+     * @var Templates Templates resource client
+     */
+    public $templates;
+
+    /**
+     * @var Webhooks Webhooks resource client
+     */
+    public $webhooks;
+
+    /**
      * Initialize the Unsent client.
      *
      * @param string|null $key API key (if null, reads from UNSENT_API_KEY env var)
@@ -99,6 +134,13 @@ class Unsent
         $this->contacts = new Contacts($this);
         $this->campaigns = new Campaigns($this);
         $this->domains = new Domains($this);
+        $this->analytics = new Analytics($this);
+        $this->apiKeys = new ApiKeys($this);
+        $this->contactBooks = new ContactBooks($this);
+        $this->settings = new Settings($this);
+        $this->suppressions = new Suppressions($this);
+        $this->templates = new Templates($this);
+        $this->webhooks = new Webhooks($this);
     }
 
     /**

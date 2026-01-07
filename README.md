@@ -384,6 +384,336 @@ if ($error) {
 [$data, $error] = $client->domains->delete(123);
 ```
 
+### Managing Contact Books
+
+Contact Books are containers for organizing your contacts.
+
+#### List Contact Books
+
+```php
+<?php
+
+[$data, $error] = $client->contactBooks->list();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data as $book) {
+        echo "Book: " . $book['name'] . "\n";
+    }
+}
+```
+
+#### Create Contact Book
+
+```php
+<?php
+
+[$data, $error] = $client->contactBooks->create([
+    'name' => 'Newsletter Subscribers',
+    'emoji' => '📧'
+]);
+```
+
+#### Get Contact Book
+
+```php
+<?php
+
+[$data, $error] = $client->contactBooks->get('book_id');
+```
+
+#### Update Contact Book
+
+```php
+<?php
+
+[$data, $error] = $client->contactBooks->update('book_id', [
+    'name' => 'Updated Name',
+    'emoji' => '📬'
+]);
+```
+
+#### Delete Contact Book
+
+```php
+<?php
+
+[$data, $error] = $client->contactBooks->delete('book_id');
+```
+
+### Managing Templates
+
+Templates allow you to create reusable email templates.
+
+#### List Templates
+
+```php
+<?php
+
+[$data, $error] = $client->templates->list();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data as $template) {
+        echo "Template: " . $template['name'] . "\n";
+    }
+}
+```
+
+#### Create Template
+
+```php
+<?php
+
+[$data, $error] = $client->templates->create([
+    'name' => 'Welcome Email',
+    'subject' => 'Welcome to {{company}}!',
+    'html' => '<h1>Welcome, {{firstName}}!</h1><p>We're glad to have you.</p>',
+    'text' => 'Welcome, {{firstName}}! We're glad to have you.'
+]);
+```
+
+#### Get Template
+
+```php
+<?php
+
+[$data, $error] = $client->templates->get('template_id');
+```
+
+#### Update Template
+
+```php
+<?php
+
+[$data, $error] = $client->templates->update('template_id', [
+    'subject' => 'Welcome to our platform!',
+    'html' => '<h1>Updated content</h1>'
+]);
+```
+
+#### Delete Template
+
+```php
+<?php
+
+[$data, $error] = $client->templates->delete('template_id');
+```
+
+### Analytics
+
+Get insights into your email performance.
+
+#### Get Analytics Overview
+
+```php
+<?php
+
+[$data, $error] = $client->analytics->get();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Sent: " . $data['sent'] . "\n";
+    echo "Delivered: " . $data['delivered'] . "\n";
+    echo "Bounced: " . $data['bounced'] . "\n";
+}
+```
+
+#### Get Time Series Data
+
+```php
+<?php
+
+[$data, $error] = $client->analytics->getTimeSeries(['days' => 30]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data as $point) {
+        echo "Date: " . $point['date'] . ", Sent: " . $point['sent'] . "\n";
+    }
+}
+```
+
+#### Get Reputation Score
+
+```php
+<?php
+
+[$data, $error] = $client->analytics->getReputation();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Reputation Score: " . $data['score'] . "\n";
+    echo "Bounce Rate: " . $data['bounceRate'] . "%\n";
+}
+```
+
+### Managing API Keys
+
+Create and manage API keys for your application.
+
+#### List API Keys
+
+```php
+<?php
+
+[$data, $error] = $client->apiKeys->list();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data as $key) {
+        echo "Key: " . $key['name'] . " (" . $key['permission'] . ")\n";
+    }
+}
+```
+
+#### Create API Key
+
+```php
+<?php
+
+[$data, $error] = $client->apiKeys->create([
+    'name' => 'Production Key',
+    'permission' => 'SENDING'
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "New API Key: " . $data['token'] . "\n";
+    // Important: Save this token securely, it won't be shown again
+}
+```
+
+#### Delete API Key
+
+```php
+<?php
+
+[$data, $error] = $client->apiKeys->delete('key_id');
+```
+
+### Settings
+
+Get your account settings.
+
+#### Get Settings
+
+```php
+<?php
+
+[$data, $error] = $client->settings->get();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Account: " . $data['accountName'] . "\n";
+    echo "Email Limit: " . $data['emailLimit'] . "\n";
+}
+```
+
+### Managing Suppressions
+
+Manage your suppression list (bounced, complained, or unsubscribed emails).
+
+#### List Suppressions
+
+```php
+<?php
+
+[$data, $error] = $client->suppressions->list([
+    'page' => 1,
+    'limit' => 50
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data['data'] as $suppression) {
+        echo "Email: " . $suppression['email'] . ", Reason: " . $suppression['reason'] . "\n";
+    }
+}
+```
+
+#### Add Suppression
+
+```php
+<?php
+
+[$data, $error] = $client->suppressions->add([
+    'email' => 'user@example.com',
+    'reason' => 'MANUAL'
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Email added to suppression list\n";
+}
+```
+
+#### Delete Suppression
+
+```php
+<?php
+
+[$data, $error] = $client->suppressions->delete('user@example.com');
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Email removed from suppression list\n";
+}
+```
+
+### Managing Webhooks
+
+> **Note**: Webhooks are included for reference as a future implementation. The webhook functionality is not yet fully operational in the API.
+
+#### List Webhooks
+
+```php
+<?php
+
+[$data, $error] = $client->webhooks->list();
+```
+
+#### Create Webhook
+
+```php
+<?php
+
+[$data, $error] = $client->webhooks->create([
+    'url' => 'https://your-app.com/webhook',
+    'events' => ['email.sent', 'email.delivered', 'email.bounced']
+]);
+```
+
+#### Update Webhook
+
+```php
+<?php
+
+[$data, $error] = $client->webhooks->update('webhook_id', [
+    'url' => 'https://your-app.com/updated-webhook',
+    'events' => ['email.sent', 'email.delivered']
+]);
+```
+
+#### Delete Webhook
+
+```php
+<?php
+
+[$data, $error] = $client->webhooks->delete('webhook_id');
+```
+
 ### Error Handling
 
 By default, the SDK raises exceptions on HTTP errors:
@@ -455,23 +785,45 @@ $client = new Unsent('un_xxxx', null, true, $httpClient);
 
 ### Email Methods
 
-- `$client->emails->send($payload)` - Send an email (alias for `create`)
-- `$client->emails->create($payload)` - Create and send an email
-- `$client->emails->batch($emails)` - Send multiple emails in batch
+- `$client->emails->send($payload, $options = [])` - Send an email (alias for `create`)
+- `$client->emails->create($payload, $options = [])` - Create and send an email
+- `$client->emails->batch($emails, $options = [])` - Send multiple emails in batch
+- `$client->emails->list($options = [])` - List emails with optional filters
 - `$client->emails->get($emailId)` - Get email details
 - `$client->emails->update($emailId, $payload)` - Update a scheduled email
 - `$client->emails->cancel($emailId)` - Cancel a scheduled email
+- `$client->emails->getComplaints($options = [])` - Get email complaints
+- `$client->emails->getBounces($options = [])` - Get email bounces
+- `$client->emails->getUnsubscribes($options = [])` - Get email unsubscribes
+
+### Contact Book Methods
+
+- `$client->contactBooks->list()` -List all contact books
+- `$client->contactBooks->create($payload)` - Create a contact book
+- `$client->contactBooks->get($bookId)` - Get contact book details
+- `$client->contactBooks->update($bookId, $payload)` - Update a contact book
+- `$client->contactBooks->delete($bookId)` - Delete a contact book
 
 ### Contact Methods
 
+- `$client->contacts->list($bookId, $options = [])` - List contacts in a book
 - `$client->contacts->create($bookId, $payload)` - Create a contact
 - `$client->contacts->get($bookId, $contactId)` - Get contact details
 - `$client->contacts->update($bookId, $contactId, $payload)` - Update a contact
 - `$client->contacts->upsert($bookId, $contactId, $payload)` - Upsert a contact
 - `$client->contacts->delete($bookId, $contactId)` - Delete a contact
 
+### Template Methods
+
+- `$client->templates->list()` - List all templates
+- `$client->templates->create($payload)` - Create a template
+- `$client->templates->get($templateId)` - Get template details
+- `$client->templates->update($templateId, $payload)` - Update a template
+- `$client->templates->delete($templateId)` - Delete a template
+
 ### Campaign Methods
 
+- `$client->campaigns->list()` - List all campaigns
 - `$client->campaigns->create($payload)` - Create a campaign
 - `$client->campaigns->get($campaignId)` - Get campaign details
 - `$client->campaigns->schedule($campaignId, $payload)` - Schedule a campaign
@@ -485,6 +837,37 @@ $client = new Unsent('un_xxxx', null, true, $httpClient);
 - `$client->domains->verify($domainId)` - Verify a domain
 - `$client->domains->get($domainId)` - Get domain details
 - `$client->domains->delete($domainId)` - Delete a domain
+
+### Analytics Methods
+
+- `$client->analytics->get()` - Get analytics overview
+- `$client->analytics->getTimeSeries($options = [])` - Get time series analytics
+- `$client->analytics->getReputation()` - Get reputation score
+
+### API Key Methods
+
+- `$client->apiKeys->list()` - List all API keys
+- `$client->apiKeys->create($payload)` - Create an API key
+- `$client->apiKeys->delete($keyId)` - Delete an API key
+
+### Settings Methods
+
+- `$client->settings->get()` - Get account settings
+
+### Suppression Methods
+
+- `$client->suppressions->list($options = [])` - List suppressions
+- `$client->suppressions->add($payload)` - Add an email to suppression list
+- `$client->suppressions->delete($email)` - Remove an email from suppression list
+
+### Webhook Methods
+
+> **Note**: Webhooks are a future feature and not yet fully operational.
+
+- `$client->webhooks->list()` - List all webhooks
+- `$client->webhooks->create($payload)` - Create a webhook
+- `$client->webhooks->update($webhookId, $payload)` - Update a webhook
+- `$client->webhooks->delete($webhookId)` - Delete a webhook
 
 ## Requirements
 

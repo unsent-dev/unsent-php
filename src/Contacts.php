@@ -23,6 +23,20 @@ class Contacts
     }
 
     /**
+     * List contacts in a contact book.
+     *
+     * @param string $bookId Contact book ID
+     * @param array $options Optional parameters (emails, page, limit, ids)
+     * @return array [data, error]
+     */
+    public function list(string $bookId, array $options = []): array
+    {
+        $query = http_build_query($options);
+        $path = "/contactBooks/{$bookId}/contacts" . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
+    }
+
+    /**
      * Create a contact.
      *
      * @param string $bookId Contact book ID

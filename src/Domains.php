@@ -46,10 +46,10 @@ class Domains
     /**
      * Verify a domain.
      *
-     * @param int $domainId Domain ID
+     * @param string $domainId Domain ID
      * @return array [data, error]
      */
-    public function verify(int $domainId): array
+    public function verify(string $domainId): array
     {
         return $this->unsent->put("/domains/{$domainId}/verify", []);
     }
@@ -57,10 +57,10 @@ class Domains
     /**
      * Get domain details.
      *
-     * @param int $domainId Domain ID
+     * @param string $domainId Domain ID
      * @return array [data, error]
      */
-    public function get(int $domainId): array
+    public function get(string $domainId): array
     {
         return $this->unsent->get("/domains/{$domainId}");
     }
@@ -68,10 +68,10 @@ class Domains
     /**
      * Delete a domain.
      *
-     * @param int $domainId Domain ID
+     * @param string $domainId Domain ID
      * @return array [data, error]
      */
-    public function delete(int $domainId): array
+    public function delete(string $domainId): array
     {
         return $this->unsent->delete("/domains/{$domainId}");
     }

@@ -23,6 +23,16 @@ class Campaigns
     }
 
     /**
+     * List all campaigns.
+     *
+     * @return array [data, error]
+     */
+    public function list(): array
+    {
+        return $this->unsent->get('/campaigns');
+    }
+
+    /**
      * Create a campaign.
      *
      * @param array $payload Campaign data
