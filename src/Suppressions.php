@@ -36,15 +36,22 @@ class Suppressions
     }
 
     /**
-     * Add a suppression.
+     * Add a suppression (block an email address).
      *
-     * @param array $payload Suppression data
-     * @return array [data, error]
+     * @param array $payload Suppression data (use AddSuppressionRequest structure from Types.php)
+     *   - 'email': string Email address to suppress (required)
+     *   - 'reason': string Reason for suppression - HARD_BOUNCE, COMPLAINT, MANUAL, or UNSUBSCRIBE (required)
+     *   - 'source': string|null Source of suppression
+     * @return array [data, error] - Returns suppression data on success
+     * 
+     * @see \Souravsspace\Unsent\Model\AddSuppressionRequest For request structure
+     * @see \Souravsspace\Unsent\Model\AddSuppression200Response For response structure
      */
     public function add(array $payload): array
     {
         return $this->unsent->post('/suppressions', $payload);
     }
+
 
     /**
      * Delete a suppression by email.

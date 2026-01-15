@@ -37,11 +37,16 @@ class Contacts
     }
 
     /**
-     * Create a contact.
+     * Create a contact in a contact book.
      *
      * @param string $bookId Contact book ID
-     * @param array $payload Contact data
-     * @return array [data, error]
+     * @param array $payload Contact data (use CreateContactRequest structure from Types.php)
+     *   - 'email': string Email address (required)
+     *   - 'name': string|null Contact name
+     *   - 'metadata': array|null Custom metadata fields
+     * @return array [data, error] - Returns contact data on success
+     * 
+     * @see \Souravsspace\Unsent\Model\CreateContactRequest For request structure
      */
     public function create(string $bookId, array $payload): array
     {
@@ -61,12 +66,17 @@ class Contacts
     }
 
     /**
-     * Update a contact.
+     * Update a contact (partial update).
      *
      * @param string $bookId Contact book ID
      * @param string $contactId Contact ID
-     * @param array $payload Update data
-     * @return array [data, error]
+     * @param array $payload Update data (use UpdateContactRequest structure from Types.php)
+     *   - 'email': string|null Email address
+     *   - 'name': string|null Contact name
+     *   - 'metadata': array|null Custom metadata fields
+     * @return array [data, error] - Returns updated contact data
+     * 
+     * @see \Souravsspace\Unsent\Model\UpdateContactRequest For request structure
      */
     public function update(string $bookId, string $contactId, array $payload): array
     {
@@ -77,9 +87,14 @@ class Contacts
      * Upsert a contact (create if doesn't exist, update if exists).
      *
      * @param string $bookId Contact book ID
-     * @param string $contactId Contact ID
-     * @param array $payload Contact data
-     * @return array [data, error]
+     * @param string $contactId Contact ID (will be created with this ID if doesn't exist)
+     * @param array $payload Contact data (use CreateContactRequest structure from Types.php)
+     *   - 'email': string Email address (required)
+     *   - 'name': string|null Contact name
+     *   - 'metadata': array|null Custom metadata fields
+     * @return array [data, error] - Returns contact data (created or updated)
+     * 
+     * @see \Souravsspace\Unsent\Model\CreateContactRequest For request structure
      */
     public function upsert(string $bookId, string $contactId, array $payload): array
     {

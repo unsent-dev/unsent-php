@@ -187,6 +187,47 @@ if ($error) {
 }
 ```
 
+#### List Emails
+
+```php
+<?php
+
+[$data, $error] = $client->emails->list([
+    'page' => 1,
+    'limit' => 50,
+    'startDate' => '2024-01-01T00:00:00Z',
+    'endDate' => '2024-12-31T23:59:59Z',
+    'domainId' => 'domain_123'
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data['data'] as $email) {
+        echo "Email ID: " . $email['id'] . ", Status: " . $email['status'] . "\n";
+    }
+}
+```
+
+#### Get Email Events
+
+```php
+<?php
+
+[$data, $error] = $client->emails->getEvents('email_id', [
+    'page' => 1,
+    'limit' => 50
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data as $event) {
+        echo "Event: " . $event['type'] . " at " . $event['timestamp'] . "\n";
+    }
+}
+```
+
 ### Managing Contacts
 
 #### Create Contact
@@ -382,6 +423,36 @@ if ($error) {
 <?php
 
 [$data, $error] = $client->domains->delete(123);
+```
+
+#### Get Domain Analytics
+
+```php
+<?php
+
+[$data, $error] = $client->domains->getAnalytics('domain_id', [
+    'days' => 30
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Domain analytics retrieved successfully\n";
+}
+```
+
+#### Get Domain Stats
+
+```php
+<?php
+
+[$data, $error] = $client->domains->getStats('domain_id');
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Domain stats retrieved successfully\n";
+}
 ```
 
 ### Managing Contact Books
@@ -714,6 +785,156 @@ if ($error) {
 [$data, $error] = $client->webhooks->delete('webhook_id');
 ```
 
+### System Operations
+
+Check API health and version information.
+
+#### Health Check
+
+```php
+<?php
+
+[$data, $error] = $client->system->health();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "API Status: " . $data['status'] . "\n";
+    echo "Uptime: " . $data['uptime'] . " seconds\n";
+}
+```
+
+#### Get Version Information
+
+```php
+<?php
+
+[$data, $error] = $client->system->version();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "API Version: " . $data['version'] . "\n";
+    echo "Environment: " . $data['environment'] . "\n";
+    echo "Node Version: " . $data['nodeVersion'] . "\n";
+}
+```
+
+### Activity Feed
+
+Retrieve activity feed with email events and details.
+
+#### Get Activity
+
+```php
+<?php
+
+[$data, $error] = $client->activity->get([
+    'page' => 1,
+    'limit' => 50
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Activity feed retrieved successfully\n";
+}
+```
+
+### Events
+
+Manage and retrieve email events.
+
+#### List All Events
+
+```php
+<?php
+
+[$data, $error] = $client->events->list([
+    'page' => 1,
+    'limit' => 50,
+    'status' => 'DELIVERED',
+    'startDate' => '2024-01-01T00:00:00Z'
+]);
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Events retrieved successfully\n";
+}
+```
+
+### Teams
+
+Manage team information and members.
+
+#### List Teams
+
+```php
+<?php
+
+[$data, $error] = $client->teams->list();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    foreach ($data as $team) {
+        echo "Team: " . $team['name'] . "\n";
+    }
+}
+```
+
+#### Get Team Details
+
+```php
+<?php
+
+[$data, $error] = $client->teams->get('team_id');
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Team Name: " . $data['name'] . "\n";
+    echo "Plan: " . $data['plan'] . "\n";
+}
+```
+
+### Metrics
+
+Retrieve metrics data for your account.
+
+#### Get Metrics
+
+```php
+<?php
+
+[$data, $error] = $client->metrics->get();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Metrics retrieved successfully\n";
+}
+```
+
+### Stats
+
+Retrieve statistical data.
+
+#### Get Stats
+
+```php
+<?php
+
+[$data, $error] = $client->stats->get();
+
+if ($error) {
+    echo "Error: " . $error['message'] . "\n";
+} else {
+    echo "Stats retrieved successfully\n";
+}
+```
+
 ### Error Handling
 
 By default, the SDK raises exceptions on HTTP errors:
@@ -795,6 +1016,7 @@ $client = new Unsent('un_xxxx', null, true, $httpClient);
 - `$client->emails->getComplaints($options = [])` - Get email complaints
 - `$client->emails->getBounces($options = [])` - Get email bounces
 - `$client->emails->getUnsubscribes($options = [])` - Get email unsubscribes
+- `$client->emails->getEvents($emailId, $options = [])` - Get events for a specific email
 
 ### Contact Book Methods
 
@@ -837,6 +1059,8 @@ $client = new Unsent('un_xxxx', null, true, $httpClient);
 - `$client->domains->verify($domainId)` - Verify a domain
 - `$client->domains->get($domainId)` - Get domain details
 - `$client->domains->delete($domainId)` - Delete a domain
+- `$client->domains->getAnalytics($domainId, $options = [])` - Get domain analytics
+- `$client->domains->getStats($domainId, $options = [])` - Get domain stats
 
 ### Analytics Methods
 
@@ -868,6 +1092,32 @@ $client = new Unsent('un_xxxx', null, true, $httpClient);
 - `$client->webhooks->create($payload)` - Create a webhook
 - `$client->webhooks->update($webhookId, $payload)` - Update a webhook
 - `$client->webhooks->delete($webhookId)` - Delete a webhook
+
+### System Methods
+
+- `$client->system->health()` - Check API health status
+- `$client->system->version()` - Get API version information
+
+### Activity Methods
+
+- `$client->activity->get($options = [])` - Get activity feed
+
+### Events Methods
+
+- `$client->events->list($options = [])` - List all email events
+
+### Teams Methods
+
+- `$client->teams->list()` - List all teams
+- `$client->teams->get($teamId)` - Get team details
+
+### Metrics Methods
+
+- `$client->metrics->get($options = [])` - Get metrics data
+
+### Stats Methods
+
+- `$client->stats->get($options = [])` - Get statistics
 
 ## Requirements
 

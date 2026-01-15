@@ -75,4 +75,32 @@ class Domains
     {
         return $this->unsent->delete("/domains/{$domainId}");
     }
+
+    /**
+     * Get domain analytics.
+     *
+     * @param string $domainId Domain ID
+     * @param array $options Optional parameters
+     * @return array [data, error]
+     */
+    public function getAnalytics(string $domainId, array $options = []): array
+    {
+        $query = http_build_query($options);
+        $path = "/domains/{$domainId}/analytics" . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
+    }
+
+    /**
+     * Get domain stats.
+     *
+     * @param string $domainId Domain ID
+     * @param array $options Optional parameters
+     * @return array [data, error]
+     */
+    public function getStats(string $domainId, array $options = []): array
+    {
+        $query = http_build_query($options);
+        $path = "/domains/{$domainId}/stats" . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
+    }
 }

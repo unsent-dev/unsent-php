@@ -33,10 +33,16 @@ class Templates
     }
 
     /**
-     * Create a template.
+     * Create an email template.
      *
-     * @param array $payload Template data
-     * @return array [data, error]
+     * @param array $payload Template data (use CreateTemplateRequest structure from Types.php)
+     *   - 'name': string Template name (required)
+     *   - 'subject': string|null Email subject line
+     *   - 'html': string|null HTML content with template variables
+     *   - 'text': string|null Plain text content
+     * @return array [data, error] - Returns template data on success
+     * 
+     * @see \Souravsspace\Unsent\Model\CreateTemplateRequest For request structure
      */
     public function create(array $payload): array
     {
@@ -55,11 +61,17 @@ class Templates
     }
 
     /**
-     * Update a template.
+     * Update an email template.
      *
      * @param string $id Template ID
-     * @param array $payload Update data
-     * @return array [data, error]
+     * @param array $payload Update data (use UpdateTemplateRequest structure from Types.php)
+     *   - 'name': string|null Template name
+     *   - 'subject': string|null Email subject line
+     *   - 'html': string|null HTML content
+     *   - 'text': string|null Plain text content
+     * @return array [data, error] - Returns updated template data
+     * 
+     * @see \Souravsspace\Unsent\Model\UpdateTemplateRequest For request structure
      */
     public function update(string $id, array $payload): array
     {

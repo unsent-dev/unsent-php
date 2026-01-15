@@ -16,6 +16,12 @@ use Souravsspace\Unsent\Settings;
 use Souravsspace\Unsent\Suppressions;
 use Souravsspace\Unsent\Templates;
 use Souravsspace\Unsent\Webhooks;
+use Souravsspace\Unsent\System;
+use Souravsspace\Unsent\Events;
+use Souravsspace\Unsent\Metrics;
+use Souravsspace\Unsent\Stats;
+use Souravsspace\Unsent\Activity;
+use Souravsspace\Unsent\Teams;
 
 class UnsentTest extends TestCase
 {
@@ -43,17 +49,36 @@ class UnsentTest extends TestCase
     {
         $client = new Unsent('test_api_key');
         
+        // Core email and contact resources
         $this->assertInstanceOf(Emails::class, $client->emails);
         $this->assertInstanceOf(Contacts::class, $client->contacts);
-        $this->assertInstanceOf(Campaigns::class, $client->campaigns);
-        $this->assertInstanceOf(Domains::class, $client->domains);
-        $this->assertInstanceOf(Analytics::class, $client->analytics);
-        $this->assertInstanceOf(ApiKeys::class, $client->apiKeys);
         $this->assertInstanceOf(ContactBooks::class, $client->contactBooks);
+        
+        // Campaign and template resources
+        $this->assertInstanceOf(Campaigns::class, $client->campaigns);
+        $this->assertInstanceOf(Templates::class, $client->templates);
+        
+        // Domain and webhook resources
+        $this->assertInstanceOf(Domains::class, $client->domains);
+        $this->assertInstanceOf(Webhooks::class, $client->webhooks);
+        
+        // Management resources
+        $this->assertInstanceOf(ApiKeys::class, $client->apiKeys);
         $this->assertInstanceOf(Settings::class, $client->settings);
         $this->assertInstanceOf(Suppressions::class, $client->suppressions);
-        $this->assertInstanceOf(Templates::class, $client->templates);
-        $this->assertInstanceOf(Webhooks::class, $client->webhooks);
+        
+        // Analytics and metrics resources
+        $this->assertInstanceOf(Analytics::class, $client->analytics);
+        $this->assertInstanceOf(Metrics::class, $client->metrics);
+        $this->assertInstanceOf(Stats::class, $client->stats);
+        
+        // Activity and events resources
+        $this->assertInstanceOf(Activity::class, $client->activity);
+        $this->assertInstanceOf(Events::class, $client->events);
+        
+        // Team and system resources
+        $this->assertInstanceOf(Teams::class, $client->teams);
+        $this->assertInstanceOf(System::class, $client->system);
     }
 
     public function testConstructorUsesEnvVariable()

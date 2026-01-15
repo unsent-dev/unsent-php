@@ -1,6 +1,6 @@
 {
     "name": "souravsspace/unsent",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "PHP SDK for the Unsent API - Send transactional emails with ease",
     "type": "library",
     "license": "MIT",

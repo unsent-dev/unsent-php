@@ -25,21 +25,41 @@ class Emails
     /**
      * Send an email (alias for create).
      *
-     * @param array $payload Email data
+     * @param array $payload Email data (use SendEmailRequest structure from Types.php)
      * @param array $options Optional parameters (e.g. ['idempotencyKey' => '...'])
-     * @return array [data, error]
+     * @return array [data, error] - Returns email data on success or error details
+     * 
+     * @see \Souravsspace\Unsent\Model\SendEmailRequest For request structure
      */
     public function send(array $payload, array $options = []): array
     {
         return $this->create($payload, $options);
     }
 
+
     /**
      * Create and send an email.
      *
-     * @param array $payload Email data
+     * @param array $payload Email data (use SendEmailRequest structure from Types.php)
+     *   - 'to': array|string Email recipient(s) (SendEmailRequestTo structure: ['email' => '...', 'name' => '...'])
+     *   - 'from': string|null Sender email address
+     *   - 'subject': string Email subject
+     *   - 'html': string|null HTML email body
+     *   - 'text': string|null Plain text email body
+     *   - 'replyTo': string|null Reply-to email address
+     *   - 'cc': array|null CC recipients
+     *   - 'bcc': array|null BCC recipients
+     *   - 'attachments': array|null Email attachments
+     *   - 'headers': array|null Custom email headers
+     *   - 'tags': array|null Email tags for categorization
+     *   - 'scheduledAt': string|\DateTime|null Schedule email for later (ISO 8601 format or DateTime object)
+     *   - 'templateId': string|null Template ID to use
+     *   - 'variables': array|null Template variables
      * @param array $options Optional parameters (e.g. ['idempotencyKey' => '...'])
-     * @return array [data, error]
+     * @return array [data, error] - Returns email data on success or error details
+     * 
+     * @see \Souravsspace\Unsent\Model\SendEmailRequest For complete request structure
+     * @see \Souravsspace\Unsent\Model\SendEmailRequestTo For recipient structure
      */
     public function create(array $payload, array $options = []): array
     {
@@ -63,6 +83,7 @@ class Emails
 
         return $this->unsent->post('/emails', $body, $headers);
     }
+
 
     /**
      * Send multiple emails in batch.
@@ -215,5 +236,28 @@ class Emails
     public function cancel(string $emailId): array
     {
         return $this->unsent->post("/emails/{$emailId}/cancel", []);
+    }
+
+    /**
+     * Get events for a specific email.
+     *
+     * @param string $emailId Email ID
+     * @param array $options Optional parameters (page, limit)
+     * @return array [data, error]
+     */
+    public function getEvents(string $emailId, array $options = []): array
+    {
+        $params = [];
+        
+        if (isset($options['page'])) {
+            $params['page'] = (string) $options['page'];
+        }
+        if (isset($options['limit'])) {
+            $params['limit'] = (string) $options['limit'];
+        }
+        
+        $query = http_build_query($params);
+        $path = "/emails/{$emailId}/events" . ($query ? '?' . $query : '');
+        return $this->unsent->get($path);
     }
 }

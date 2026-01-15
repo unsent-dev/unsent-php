@@ -33,15 +33,21 @@ class ApiKeys
     }
 
     /**
-     * Create an API key.
+     * Create a new API key.
      *
-     * @param array $payload API key data
-     * @return array [data, error]
+     * @param array $payload API key data (use CreateApiKeyRequest structure from Types.php)
+     *   - 'name': string API key name (required)
+     *   - 'permission': string Permission level - FULL, SENDING, or READ_ONLY (required)
+     * @return array [data, error] - Returns API key data with token on success
+     * 
+     * @see \Souravsspace\Unsent\Model\CreateApiKeyRequest For request structure
+     * @see \Souravsspace\Unsent\Model\CreateApiKey200Response For response (includes token)
      */
     public function create(array $payload): array
     {
         return $this->unsent->post('/api-keys', $payload);
     }
+
 
     /**
      * Delete an API key.

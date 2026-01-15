@@ -35,8 +35,12 @@ class ContactBooks
     /**
      * Create a contact book.
      *
-     * @param array $payload Contact book data
-     * @return array [data, error]
+     * @param array $payload Contact book data (use CreateContactBookRequest structure from Types.php)
+     *   - 'name': string Contact book name (required)
+     *   - 'description': string|null Description
+     * @return array [data, error] - Returns contact book data on success
+     * 
+     * @see \Souravsspace\Unsent\Model\CreateContactBookRequest For request structure
      */
     public function create(array $payload): array
     {
@@ -58,8 +62,12 @@ class ContactBooks
      * Update a contact book.
      *
      * @param string $id Contact book ID
-     * @param array $payload Update data
-     * @return array [data, error]
+     * @param array $payload Update data (use UpdateContactBookRequest structure from Types.php)
+     *   - 'name': string|null Contact book name
+     *   - 'description': string|null Description
+     * @return array [data, error] - Returns updated contact book data
+     * 
+     * @see \Souravsspace\Unsent\Model\UpdateContactBookRequest For request structure
      */
     public function update(string $id, array $payload): array
     {

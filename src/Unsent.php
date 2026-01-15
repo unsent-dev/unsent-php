@@ -9,6 +9,24 @@ use GuzzleHttp\Exception\RequestException;
  * Unsent API client.
  * 
  * Main client for interacting with the Unsent API.
+ * 
+ * @property-read Emails $emails Email operations client
+ * @property-read Contacts $contacts Contact management client
+ * @property-read Campaigns $campaigns Campaign management client
+ * @property-read Domains $domains Domain management client
+ * @property-read Analytics $analytics Analytics client
+ * @property-read ApiKeys $apiKeys API key management client
+ * @property-read ContactBooks $contactBooks Contact book management client
+ * @property-read Settings $settings Team settings client
+ * @property-read Suppressions $suppressions Suppression list management client
+ * @property-read Templates $templates Email template management client
+ * @property-read Webhooks $webhooks Webhook management client
+ * @property-read System $system System operations client (health, version)
+ * @property-read Events $events Event tracking client
+ * @property-read Metrics $metrics Performance metrics client
+ * @property-read Stats $stats Statistics client
+ * @property-read Activity $activity Activity feed client
+ * @property-read Teams $teams Team management client
  */
 class Unsent
 {
@@ -95,6 +113,36 @@ class Unsent
     public $webhooks;
 
     /**
+     * @var System System resource client
+     */
+    public $system;
+
+    /**
+     * @var Events Events resource client
+     */
+    public $events;
+
+    /**
+     * @var Metrics Metrics resource client
+     */
+    public $metrics;
+
+    /**
+     * @var Stats Stats resource client
+     */
+    public $stats;
+
+    /**
+     * @var Activity Activity resource client  
+     */
+    public $activity;
+
+    /**
+     * @var Teams Teams resource client
+     */
+    public $teams;
+
+    /**
      * Initialize the Unsent client.
      *
      * @param string|null $key API key (if null, reads from UNSENT_API_KEY env var)
@@ -141,6 +189,12 @@ class Unsent
         $this->suppressions = new Suppressions($this);
         $this->templates = new Templates($this);
         $this->webhooks = new Webhooks($this);
+        $this->system = new System($this);
+        $this->events = new Events($this);
+        $this->metrics = new Metrics($this);
+        $this->stats = new Stats($this);
+        $this->activity = new Activity($this);
+        $this->teams = new Teams($this);
     }
 
     /**

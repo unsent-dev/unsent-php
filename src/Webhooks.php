@@ -68,4 +68,26 @@ class Webhooks
     {
         return $this->unsent->delete("/webhooks/{$id}");
     }
+
+    /**
+     * Get webhook details.
+     *
+     * @param string $id Webhook ID
+     * @return array [data, error]
+     */
+    public function get(string $id): array
+    {
+        return $this->unsent->get("/webhooks/{$id}");
+    }
+
+    /**
+     * Test a webhook.
+     *
+     * @param string $id Webhook ID
+     * @return array [data, error]
+     */
+    public function test(string $id): array
+    {
+        return $this->unsent->post("/webhooks/{$id}/test", []);
+    }
 }
