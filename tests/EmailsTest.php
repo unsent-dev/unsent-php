@@ -1,11 +1,11 @@
 <?php
 
-namespace Souravsspace\Unsent\Tests;
+namespace UnsentDev\Unsent\Tests;
 
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use Souravsspace\Unsent\Unsent;
-use Souravsspace\Unsent\Emails;
+use UnsentDev\Unsent\Unsent;
+use UnsentDev\Unsent\Emails;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 

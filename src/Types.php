@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Souravsspace\Unsent
+ * @package  UnsentDev\Unsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace Souravsspace\Unsent\Model;
+namespace UnsentDev\Unsent\Model;
 
 use \ArrayAccess;
-use \Souravsspace\Unsent\ObjectSerializer;
+use \UnsentDev\Unsent\ObjectSerializer;
 
 class AddSuppression200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -3213,9 +3213,9 @@ class CreateCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'contact_book_id' => 'string',
         'content' => 'string',
         'html' => 'string',
-        'reply_to' => '\SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo',
-        'cc' => '\SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo',
-        'bcc' => '\SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo',
+        'reply_to' => '\UnsentDevUnsent\Model\CreateCampaignRequestReplyTo',
+        'cc' => '\UnsentDevUnsent\Model\CreateCampaignRequestReplyTo',
+        'bcc' => '\UnsentDevUnsent\Model\CreateCampaignRequestReplyTo',
         'send_now' => 'bool',
         'scheduled_at' => 'string',
         'batch_size' => 'int'
@@ -3788,7 +3788,7 @@ class CreateCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets reply_to
      *
-     * @return \SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo|null
+     * @return \UnsentDevUnsent\Model\CreateCampaignRequestReplyTo|null
      */
     public function getReplyTo()
     {
@@ -3798,7 +3798,7 @@ class CreateCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets reply_to
      *
-     * @param \SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo|null $reply_to reply_to
+     * @param \UnsentDevUnsent\Model\CreateCampaignRequestReplyTo|null $reply_to reply_to
      *
      * @return self
      */
@@ -3815,7 +3815,7 @@ class CreateCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets cc
      *
-     * @return \SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo|null
+     * @return \UnsentDevUnsent\Model\CreateCampaignRequestReplyTo|null
      */
     public function getCc()
     {
@@ -3825,7 +3825,7 @@ class CreateCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets cc
      *
-     * @param \SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo|null $cc cc
+     * @param \UnsentDevUnsent\Model\CreateCampaignRequestReplyTo|null $cc cc
      *
      * @return self
      */
@@ -3842,7 +3842,7 @@ class CreateCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets bcc
      *
-     * @return \SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo|null
+     * @return \UnsentDevUnsent\Model\CreateCampaignRequestReplyTo|null
      */
     public function getBcc()
     {
@@ -3852,7 +3852,7 @@ class CreateCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets bcc
      *
-     * @param \SouravsspaceUnsent\Model\CreateCampaignRequestReplyTo|null $bcc bcc
+     * @param \UnsentDevUnsent\Model\CreateCampaignRequestReplyTo|null $bcc bcc
      *
      * @return self
      */
@@ -8967,8 +8967,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'day' => '\SouravsspaceUnsent\Model\GetAnalytics200ResponseDayInner[]',
-        'month' => '\SouravsspaceUnsent\Model\GetAnalytics200ResponseDayInner[]'
+        'day' => '\UnsentDevUnsent\Model\GetAnalytics200ResponseDayInner[]',
+        'month' => '\UnsentDevUnsent\Model\GetAnalytics200ResponseDayInner[]'
     ];
 
     /**
@@ -9215,7 +9215,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets day
      *
-     * @return \SouravsspaceUnsent\Model\GetAnalytics200ResponseDayInner[]
+     * @return \UnsentDevUnsent\Model\GetAnalytics200ResponseDayInner[]
      */
     public function getDay()
     {
@@ -9225,7 +9225,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets day
      *
-     * @param \SouravsspaceUnsent\Model\GetAnalytics200ResponseDayInner[] $day day
+     * @param \UnsentDevUnsent\Model\GetAnalytics200ResponseDayInner[] $day day
      *
      * @return self
      */
@@ -9242,7 +9242,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets month
      *
-     * @return \SouravsspaceUnsent\Model\GetAnalytics200ResponseDayInner[]
+     * @return \UnsentDevUnsent\Model\GetAnalytics200ResponseDayInner[]
      */
     public function getMonth()
     {
@@ -9252,7 +9252,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets month
      *
-     * @param \SouravsspaceUnsent\Model\GetAnalytics200ResponseDayInner[] $month month
+     * @param \UnsentDevUnsent\Model\GetAnalytics200ResponseDayInner[] $month month
      *
      * @return self
      */
@@ -11013,7 +11013,7 @@ class GetContactBook200Response implements ModelInterface, ArrayAccess, \JsonSer
         'team_id' => 'string',
         'created_at' => 'string',
         'updated_at' => 'string',
-        'details' => '\SouravsspaceUnsent\Model\GetContactBook200ResponseDetails'
+        'details' => '\UnsentDevUnsent\Model\GetContactBook200ResponseDetails'
     ];
 
     /**
@@ -11507,7 +11507,7 @@ class GetContactBook200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets details
      *
-     * @return \SouravsspaceUnsent\Model\GetContactBook200ResponseDetails
+     * @return \UnsentDevUnsent\Model\GetContactBook200ResponseDetails
      */
     public function getDetails()
     {
@@ -11517,7 +11517,7 @@ class GetContactBook200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets details
      *
-     * @param \SouravsspaceUnsent\Model\GetContactBook200ResponseDetails $details details
+     * @param \UnsentDevUnsent\Model\GetContactBook200ResponseDetails $details details
      *
      * @return self
      */
@@ -13441,7 +13441,7 @@ class GetDomains200ResponseInner implements ModelInterface, ArrayAccess, \JsonSe
         'subdomain' => 'string',
         'verification_error' => 'string',
         'last_checked_time' => 'string',
-        'dns_records' => '\SouravsspaceUnsent\Model\GetDomains200ResponseInnerDnsRecordsInner[]'
+        'dns_records' => '\UnsentDevUnsent\Model\GetDomains200ResponseInnerDnsRecordsInner[]'
     ];
 
     /**
@@ -14336,7 +14336,7 @@ class GetDomains200ResponseInner implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets dns_records
      *
-     * @return \SouravsspaceUnsent\Model\GetDomains200ResponseInnerDnsRecordsInner[]
+     * @return \UnsentDevUnsent\Model\GetDomains200ResponseInnerDnsRecordsInner[]
      */
     public function getDnsRecords()
     {
@@ -14346,7 +14346,7 @@ class GetDomains200ResponseInner implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets dns_records
      *
-     * @param \SouravsspaceUnsent\Model\GetDomains200ResponseInnerDnsRecordsInner[] $dns_records The DNS records of the domain
+     * @param \UnsentDevUnsent\Model\GetDomains200ResponseInnerDnsRecordsInner[] $dns_records The DNS records of the domain
      *
      * @return self
      */
@@ -16065,7 +16065,7 @@ class GetTemplates200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\SouravsspaceUnsent\Model\GetTemplates200ResponseDataInner[]'
+        'data' => '\UnsentDevUnsent\Model\GetTemplates200ResponseDataInner[]'
     ];
 
     /**
@@ -16303,7 +16303,7 @@ class GetTemplates200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets data
      *
-     * @return \SouravsspaceUnsent\Model\GetTemplates200ResponseDataInner[]
+     * @return \UnsentDevUnsent\Model\GetTemplates200ResponseDataInner[]
      */
     public function getData()
     {
@@ -16313,7 +16313,7 @@ class GetTemplates200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param \SouravsspaceUnsent\Model\GetTemplates200ResponseDataInner[] $data data
+     * @param \UnsentDevUnsent\Model\GetTemplates200ResponseDataInner[] $data data
      *
      * @return self
      */
@@ -17089,7 +17089,7 @@ class GetVersion200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         'arch' => 'string',
         'timestamp' => 'string',
         'versions' => 'array<string,string>',
-        'memory' => '\SouravsspaceUnsent\Model\GetVersion200ResponseMemory'
+        'memory' => '\UnsentDevUnsent\Model\GetVersion200ResponseMemory'
     ];
 
     /**
@@ -17576,7 +17576,7 @@ class GetVersion200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets memory
      *
-     * @return \SouravsspaceUnsent\Model\GetVersion200ResponseMemory
+     * @return \UnsentDevUnsent\Model\GetVersion200ResponseMemory
      */
     public function getMemory()
     {
@@ -17586,7 +17586,7 @@ class GetVersion200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets memory
      *
-     * @param \SouravsspaceUnsent\Model\GetVersion200ResponseMemory $memory memory
+     * @param \UnsentDevUnsent\Model\GetVersion200ResponseMemory $memory memory
      *
      * @return self
      */
@@ -18953,14 +18953,14 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'to' => '\SouravsspaceUnsent\Model\SendEmailRequestTo',
+        'to' => '\UnsentDevUnsent\Model\SendEmailRequestTo',
         'from' => 'string',
         'subject' => 'string',
         'template_id' => 'string',
         'variables' => 'array<string,string>',
-        'reply_to' => '\SouravsspaceUnsent\Model\SendEmailRequestTo',
-        'cc' => '\SouravsspaceUnsent\Model\SendEmailRequestTo',
-        'bcc' => '\SouravsspaceUnsent\Model\SendEmailRequestTo',
+        'reply_to' => '\UnsentDevUnsent\Model\SendEmailRequestTo',
+        'cc' => '\UnsentDevUnsent\Model\SendEmailRequestTo',
+        'bcc' => '\UnsentDevUnsent\Model\SendEmailRequestTo',
         'text' => 'string',
         'html' => 'string',
         'headers' => 'array<string,string>',
@@ -19301,7 +19301,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets to
      *
-     * @return \SouravsspaceUnsent\Model\SendEmailRequestTo
+     * @return \UnsentDevUnsent\Model\SendEmailRequestTo
      */
     public function getTo()
     {
@@ -19311,7 +19311,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets to
      *
-     * @param \SouravsspaceUnsent\Model\SendEmailRequestTo $to to
+     * @param \UnsentDevUnsent\Model\SendEmailRequestTo $to to
      *
      * @return self
      */
@@ -19441,7 +19441,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reply_to
      *
-     * @return \SouravsspaceUnsent\Model\SendEmailRequestTo|null
+     * @return \UnsentDevUnsent\Model\SendEmailRequestTo|null
      */
     public function getReplyTo()
     {
@@ -19451,7 +19451,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reply_to
      *
-     * @param \SouravsspaceUnsent\Model\SendEmailRequestTo|null $reply_to reply_to
+     * @param \UnsentDevUnsent\Model\SendEmailRequestTo|null $reply_to reply_to
      *
      * @return self
      */
@@ -19468,7 +19468,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cc
      *
-     * @return \SouravsspaceUnsent\Model\SendEmailRequestTo|null
+     * @return \UnsentDevUnsent\Model\SendEmailRequestTo|null
      */
     public function getCc()
     {
@@ -19478,7 +19478,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cc
      *
-     * @param \SouravsspaceUnsent\Model\SendEmailRequestTo|null $cc cc
+     * @param \UnsentDevUnsent\Model\SendEmailRequestTo|null $cc cc
      *
      * @return self
      */
@@ -19495,7 +19495,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bcc
      *
-     * @return \SouravsspaceUnsent\Model\SendEmailRequestTo|null
+     * @return \UnsentDevUnsent\Model\SendEmailRequestTo|null
      */
     public function getBcc()
     {
@@ -19505,7 +19505,7 @@ class SendEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bcc
      *
-     * @param \SouravsspaceUnsent\Model\SendEmailRequestTo|null $bcc bcc
+     * @param \UnsentDevUnsent\Model\SendEmailRequestTo|null $bcc bcc
      *
      * @return self
      */

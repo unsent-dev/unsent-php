@@ -1,6 +1,6 @@
 <?php
 
-namespace Souravsspace\Unsent;
+namespace UnsentDev\Unsent;
 
 /**
  * Client for /contactBooks endpoints.
@@ -46,7 +46,7 @@ class Contacts
      *   - 'metadata': array|null Custom metadata fields
      * @return array [data, error] - Returns contact data on success
      * 
-     * @see \Souravsspace\Unsent\Model\CreateContactRequest For request structure
+     * @see \UnsentDev\Unsent\Model\CreateContactRequest For request structure
      */
     public function create(string $bookId, array $payload): array
     {
@@ -76,7 +76,7 @@ class Contacts
      *   - 'metadata': array|null Custom metadata fields
      * @return array [data, error] - Returns updated contact data
      * 
-     * @see \Souravsspace\Unsent\Model\UpdateContactRequest For request structure
+     * @see \UnsentDev\Unsent\Model\UpdateContactRequest For request structure
      */
     public function update(string $bookId, string $contactId, array $payload): array
     {
@@ -94,7 +94,7 @@ class Contacts
      *   - 'metadata': array|null Custom metadata fields
      * @return array [data, error] - Returns contact data (created or updated)
      * 
-     * @see \Souravsspace\Unsent\Model\CreateContactRequest For request structure
+     * @see \UnsentDev\Unsent\Model\CreateContactRequest For request structure
      */
     public function upsert(string $bookId, string $contactId, array $payload): array
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Souravsspace\Unsent;
+namespace UnsentDev\Unsent;
 
 /**
  * Client for /api-keys endpoints.
@@ -40,8 +40,8 @@ class ApiKeys
      *   - 'permission': string Permission level - FULL, SENDING, or READ_ONLY (required)
      * @return array [data, error] - Returns API key data with token on success
      * 
-     * @see \Souravsspace\Unsent\Model\CreateApiKeyRequest For request structure
-     * @see \Souravsspace\Unsent\Model\CreateApiKey200Response For response (includes token)
+     * @see \UnsentDev\Unsent\Model\CreateApiKeyRequest For request structure
+     * @see \UnsentDev\Unsent\Model\CreateApiKey200Response For response (includes token)
      */
     public function create(array $payload): array
     {

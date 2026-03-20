@@ -1,6 +1,6 @@
 <?php
 
-namespace Souravsspace\Unsent;
+namespace UnsentDev\Unsent;
 
 /**
  * Client for /emails endpoints.
@@ -29,7 +29,7 @@ class Emails
      * @param array $options Optional parameters (e.g. ['idempotencyKey' => '...'])
      * @return array [data, error] - Returns email data on success or error details
      * 
-     * @see \Souravsspace\Unsent\Model\SendEmailRequest For request structure
+     * @see \UnsentDev\Unsent\Model\SendEmailRequest For request structure
      */
     public function send(array $payload, array $options = []): array
     {
@@ -58,8 +58,8 @@ class Emails
      * @param array $options Optional parameters (e.g. ['idempotencyKey' => '...'])
      * @return array [data, error] - Returns email data on success or error details
      * 
-     * @see \Souravsspace\Unsent\Model\SendEmailRequest For complete request structure
-     * @see \Souravsspace\Unsent\Model\SendEmailRequestTo For recipient structure
+     * @see \UnsentDev\Unsent\Model\SendEmailRequest For complete request structure
+     * @see \UnsentDev\Unsent\Model\SendEmailRequestTo For recipient structure
      */
     public function create(array $payload, array $options = []): array
     {

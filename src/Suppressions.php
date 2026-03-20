@@ -1,6 +1,6 @@
 <?php
 
-namespace Souravsspace\Unsent;
+namespace UnsentDev\Unsent;
 
 /**
  * Client for /suppressions endpoints.
@@ -44,8 +44,8 @@ class Suppressions
      *   - 'source': string|null Source of suppression
      * @return array [data, error] - Returns suppression data on success
      * 
-     * @see \Souravsspace\Unsent\Model\AddSuppressionRequest For request structure
-     * @see \Souravsspace\Unsent\Model\AddSuppression200Response For response structure
+     * @see \UnsentDev\Unsent\Model\AddSuppressionRequest For request structure
+     * @see \UnsentDev\Unsent\Model\AddSuppression200Response For response structure
      */
     public function add(array $payload): array
     {

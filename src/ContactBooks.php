@@ -1,6 +1,6 @@
 <?php
 
-namespace Souravsspace\Unsent;
+namespace UnsentDev\Unsent;
 
 /**
  * Client for /contactBooks endpoints.
@@ -40,7 +40,7 @@ class ContactBooks
      *   - 'description': string|null Description
      * @return array [data, error] - Returns contact book data on success
      * 
-     * @see \Souravsspace\Unsent\Model\CreateContactBookRequest For request structure
+     * @see \UnsentDev\Unsent\Model\CreateContactBookRequest For request structure
      */
     public function create(array $payload): array
     {
@@ -67,7 +67,7 @@ class ContactBooks
      *   - 'description': string|null Description
      * @return array [data, error] - Returns updated contact book data
      * 
-     * @see \Souravsspace\Unsent\Model\UpdateContactBookRequest For request structure
+     * @see \UnsentDev\Unsent\Model\UpdateContactBookRequest For request structure
      */
     public function update(string $id, array $payload): array
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Souravsspace\Unsent;
+namespace UnsentDev\Unsent;
 
 /**
  * Client for /templates endpoints.
@@ -42,7 +42,7 @@ class Templates
      *   - 'text': string|null Plain text content
      * @return array [data, error] - Returns template data on success
      * 
-     * @see \Souravsspace\Unsent\Model\CreateTemplateRequest For request structure
+     * @see \UnsentDev\Unsent\Model\CreateTemplateRequest For request structure
      */
     public function create(array $payload): array
     {
@@ -71,7 +71,7 @@ class Templates
      *   - 'text': string|null Plain text content
      * @return array [data, error] - Returns updated template data
      * 
-     * @see \Souravsspace\Unsent\Model\UpdateTemplateRequest For request structure
+     * @see \UnsentDev\Unsent\Model\UpdateTemplateRequest For request structure
      */
     public function update(string $id, array $payload): array
     {

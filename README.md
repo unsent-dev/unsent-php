@@ -13,7 +13,7 @@ Official PHP SDK for the [Unsent](https://unsent.dev) API - the best open-source
 Install via Composer:
 
 ```bash
-composer require souravsspace/unsent
+composer require unsent-dev/unsent
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ composer require souravsspace/unsent
 
 require 'vendor/autoload.php';
 
-use Souravsspace\Unsent\Unsent;
+use UnsentDev\Unsent\Unsent;
 
 $client = new Unsent('un_xxxx');
 ```
@@ -942,8 +942,8 @@ By default, the SDK raises exceptions on HTTP errors:
 ```php
 <?php
 
-use Souravsspace\Unsent\Unsent;
-use Souravsspace\Unsent\UnsentHTTPError;
+use UnsentDev\Unsent\Unsent;
+use UnsentDev\Unsent\UnsentHTTPError;
 
 $client = new Unsent('un_xxxx');
 
@@ -988,7 +988,7 @@ For advanced use cases, you can provide your own Guzzle client instance:
 <?php
 
 use GuzzleHttp\Client;
-use Souravsspace\Unsent\Unsent;
+use UnsentDev\Unsent\Unsent;
 
 $httpClient = new Client([
     'timeout' => 30,
@@ -1131,5 +1131,5 @@ MIT
 ## Support
 
 - [Documentation](https://docs.unsent.dev)
-- [GitHub Issues](https://github.com/souravsspace/unsent-php/issues)
+- [GitHub Issues](https://github.com/unsent-dev/unsent-php/issues)
 - [Discord Community](https://discord.gg/unsent)

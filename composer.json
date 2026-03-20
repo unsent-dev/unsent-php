@@ -1,5 +1,5 @@
 {
-    "name": "souravsspace/unsent",
+    "name": "unsent-dev/unsent",
     "version": "1.0.4",
     "description": "PHP SDK for the Unsent API - Send transactional emails with ease",
     "type": "library",
@@ -8,16 +8,16 @@
     "homepage": "https://unsent.dev",
     "repository": {
         "type": "git",
-        "url": "https://github.com/souravsspace/unsent-php.git"
+        "url": "https://github.com/unsent-dev/unsent-php.git"
     },
     "support": {
-        "issues": "https://github.com/souravsspace/unsent-php/issues",
-        "source": "https://github.com/souravsspace/unsent-php",
+        "issues": "https://github.com/unsent-dev/unsent-php/issues",
+        "source": "https://github.com/unsent-dev/unsent-php",
         "docs": "https://docs.unsent.dev"
     },
     "authors": [
         {
-            "name": "sourav"
+            "name": "Unsent"
         }
     ],
     "require": {
@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Souravsspace\\Unsent\\": "src/"
+            "UnsentDev\\Unsent\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Souravsspace\\Unsent\\Tests\\": "tests/"
+            "UnsentDev\\Unsent\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable",

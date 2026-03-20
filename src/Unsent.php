@@ -1,6 +1,6 @@
 <?php
 
-namespace Souravsspace\Unsent;
+namespace UnsentDev\Unsent;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;

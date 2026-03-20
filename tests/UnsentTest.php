@@ -1,27 +1,27 @@
 <?php
 
-namespace Souravsspace\Unsent\Tests;
+namespace UnsentDev\Unsent\Tests;
 
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use Souravsspace\Unsent\Unsent;
-use Souravsspace\Unsent\Emails;
-use Souravsspace\Unsent\Contacts;
-use Souravsspace\Unsent\Campaigns;
-use Souravsspace\Unsent\Domains;
-use Souravsspace\Unsent\Analytics;
-use Souravsspace\Unsent\ApiKeys;
-use Souravsspace\Unsent\ContactBooks;
-use Souravsspace\Unsent\Settings;
-use Souravsspace\Unsent\Suppressions;
-use Souravsspace\Unsent\Templates;
-use Souravsspace\Unsent\Webhooks;
-use Souravsspace\Unsent\System;
-use Souravsspace\Unsent\Events;
-use Souravsspace\Unsent\Metrics;
-use Souravsspace\Unsent\Stats;
-use Souravsspace\Unsent\Activity;
-use Souravsspace\Unsent\Teams;
+use UnsentDev\Unsent\Unsent;
+use UnsentDev\Unsent\Emails;
+use UnsentDev\Unsent\Contacts;
+use UnsentDev\Unsent\Campaigns;
+use UnsentDev\Unsent\Domains;
+use UnsentDev\Unsent\Analytics;
+use UnsentDev\Unsent\ApiKeys;
+use UnsentDev\Unsent\ContactBooks;
+use UnsentDev\Unsent\Settings;
+use UnsentDev\Unsent\Suppressions;
+use UnsentDev\Unsent\Templates;
+use UnsentDev\Unsent\Webhooks;
+use UnsentDev\Unsent\System;
+use UnsentDev\Unsent\Events;
+use UnsentDev\Unsent\Metrics;
+use UnsentDev\Unsent\Stats;
+use UnsentDev\Unsent\Activity;
+use UnsentDev\Unsent\Teams;
 
 class UnsentTest extends TestCase
 {
