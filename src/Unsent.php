@@ -143,6 +143,11 @@ class Unsent
     public $teams;
 
     /**
+     * @var ProviderConnections ProviderConnections resource client
+     */
+    public $providerConnections;
+
+    /**
      * Initialize the Unsent client.
      *
      * @param string|null $key API key (if null, reads from UNSENT_API_KEY env var)
@@ -195,6 +200,7 @@ class Unsent
         $this->stats = new Stats($this);
         $this->activity = new Activity($this);
         $this->teams = new Teams($this);
+        $this->providerConnections = new ProviderConnections($this);
     }
 
     /**
