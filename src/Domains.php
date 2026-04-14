@@ -1,4 +1,5 @@
 <?php
+// @manual
 
 namespace UnsentDev\Unsent;
 
@@ -102,5 +103,53 @@ class Domains
         $query = http_build_query($options);
         $path = "/domains/{$domainId}/stats" . ($query ? '?' . $query : '');
         return $this->unsent->get($path);
+    }
+
+    /**
+     * List all routes for a domain.
+     *
+     * @param string $domainId Domain ID
+     * @return array [data, error]
+     */
+    public function listRoutes(string $domainId): array
+    {
+        return $this->unsent->get("/domains/{$domainId}/routes");
+    }
+
+    /**
+     * Add a route to a domain.
+     *
+     * @param string $domainId Domain ID
+     * @param array $payload Route data
+     * @return array [data, error]
+     */
+    public function addRoute(string $domainId, array $payload): array
+    {
+        return $this->unsent->post("/domains/{$domainId}/routes", $payload);
+    }
+
+    /**
+     * Update a domain route.
+     *
+     * @param string $domainId Domain ID
+     * @param string $routeId Route ID
+     * @param array $payload Route data
+     * @return array [data, error]
+     */
+    public function updateRoute(string $domainId, string $routeId, array $payload): array
+    {
+        return $this->unsent->patch("/domains/{$domainId}/routes/{$routeId}", $payload);
+    }
+
+    /**
+     * Delete a domain route.
+     *
+     * @param string $domainId Domain ID
+     * @param string $routeId Route ID
+     * @return array [data, error]
+     */
+    public function deleteRoute(string $domainId, string $routeId): array
+    {
+        return $this->unsent->delete("/domains/{$domainId}/routes/{$routeId}");
     }
 }

@@ -1,4 +1,5 @@
 <?php
+// @manual
 
 namespace UnsentDev\Unsent;
 
@@ -86,5 +87,16 @@ class Campaigns
     public function resume(string $campaignId): array
     {
         return $this->unsent->post("/campaigns/{$campaignId}/resume", []);
+    }
+
+    /**
+     * Delete a campaign.
+     *
+     * @param string $campaignId Campaign ID
+     * @return array [data, error]
+     */
+    public function delete(string $campaignId): array
+    {
+        return $this->unsent->delete("/campaigns/{$campaignId}");
     }
 }
